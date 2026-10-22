@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card border-0 shadow-sm p-4 bg-white">
+            <h3 class="fw-bold text-center mb-4">Login to VOGUE</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit" class="btn btn-fashion w-100 mt-2">Login</button>
+            </form>
+            <p class="text-center mt-3 small">Don't have an account? <a href="{% url 'register' %}" class="text-decoration-none text-danger">Register here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

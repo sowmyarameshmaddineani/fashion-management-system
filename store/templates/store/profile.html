@@ -1,0 +1,32 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4 bg-white mb-4">
+            <h4 class="fw-bold mb-3">Add Shipping Address</h4>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3"><input type="text" class="form-control" name="full_name" placeholder="Full Name" required></div>
+                <div class="mb-3"><input type="text" class="form-control" name="street_address" placeholder="Street Address" required></div>
+                <div class="mb-3"><input type="text" class="form-control" name="city" placeholder="City" required></div>
+                <div class="mb-3"><input type="text" class="form-control" name="state" placeholder="State" required></div>
+                <div class="mb-3"><input type="text" class="form-control" name="pincode" placeholder="Pincode" required></div>
+                <div class="mb-3"><input type="text" class="form-control" name="phone" placeholder="Phone Number" required></div>
+                <button type="submit" class="btn btn-fashion w-100">Save Address</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4 class="fw-bold mb-3">Saved Addresses</h4>
+        {% for address in addresses %}
+        <div class="card border-0 shadow-sm p-3 mb-3 bg-white">
+            <h6 class="fw-bold">{{ address.full_name }}</h6>
+            <p class="text-muted small mb-1">{{ address.street_address }}, {{ address.city }}, {{ address.state }} - {{ address.pincode }}</p>
+            <p class="text-muted small mb-0">Phone: {{ address.phone }}</p>
+        </div>
+        {% empty %}
+        <p class="text-muted">No saved delivery addresses found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
