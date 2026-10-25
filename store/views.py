@@ -18,7 +18,7 @@ def index(request):
     categories = Category.objects.all()
     
     context = {
-        'products': products[:48], # Display first 48 for fast loading
+        'products': products[:48],
         'categories': categories,
         'selected_category': category_slug
     }
@@ -87,3 +87,33 @@ def profile_view(request):
     
     addresses = Address.objects.filter(user=request.user)
     return render(request, 'store/profile.html', {'addresses': addresses})
+
+@login_required
+def checkout_view(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    if not cart_items:
+        return redirect('cart')
+    
+    total = sum(item.total_price() for item in cart_items)
+    addresses = Address.objects.filter(user=request.user)
+
+    if request.method == 'POST':
+        address_id = request.POST.get('address_id')
+        if address_id:
+            address = get_object_or_404(Address, id=address_id, user=request.user)
+            # Create the Order using the 'address' foreign key
+            order = Order.objects.create(
+                user=request.user,
+                address=address,
+                total_amount=total,
+                status='Pending'
+            )
+            cart_items.delete()
+            return render(request, 'store/order_success.html', {'order': order})
+            
+    return render(request, 'store/checkout.html', {'cart_items': cart_items, 'total': total, 'addresses': addresses})
+
+@login_required
+def orders_view(request):
+    user_orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'store/orders.html', {'orders': user_orders})

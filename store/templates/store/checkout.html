@@ -1,0 +1,36 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card border-0 shadow-sm p-4 bg-white">
+            <h3 class="fw-bold mb-4">Select Delivery Address & Checkout</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {% if addresses %}
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Choose a Saved Address:</label>
+                        {% for address in addresses %}
+                        <div class="form-check mb-2 p-3 border rounded">
+                            <input class="form-check-input" type="radio" name="address_id" value="{{ address.id }}" required {% if forloop.first %}checked{% endif %}>
+                            <label class="form-check-label">
+                                <strong>{{ address.full_name }}</strong> - {{ address.phone }}<br>
+                                <small class="text-muted">{{ address.street_address }}, {{ address.city }}, {{ address.state }} - {{ address.pincode }}</small>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="fs-5">Total to Pay: <strong>₹{{ total }}</strong></span>
+                        <button type="submit" class="btn btn-fashion btn-lg">Place Order</button>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <p class="text-muted">You have no saved shipping addresses yet.</p>
+                        <a href="{% url 'profile' %}" class="btn btn-outline-dark">Add an Address First</a>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

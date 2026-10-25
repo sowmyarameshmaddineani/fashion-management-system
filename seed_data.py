@@ -6,7 +6,7 @@ django.setup()
 
 from store.models import Category, Product
 
-print("Clearing old database records...")
+print("Resetting database for 20 curated Indian fashion items...")
 Product.objects.all().delete()
 Category.objects.all().delete()
 
@@ -17,12 +17,12 @@ kids_cat = Category.objects.create(name='Kids', slug='kids')
 acc_cat = Category.objects.create(name='Accessories', slug='accessories')
 
 catalog = [
-    # --- MEN (10 Items) ---
+    # --- MEN (5 Items) ---
     {
         "cat": men_cat,
         "title": "Royal Navy Blue Silk Kurta Pyjama Set",
         "desc": "Traditional North Indian festive silk kurta paired with comfortable white pyjamas.",
-        "image": "https://images.unsplash.com/photo-1597983074815-f513d8091873?w=600",
+        "image": "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=600", # Updated working image link
         "price": 2499, "discount": 1999
     },
     {
@@ -41,10 +41,10 @@ catalog = [
     },
     {
         "cat": men_cat,
-        "title": "Classic Black Linen Casual Shirt",
-        "desc": "Breathable black linen shirt perfect for modern casual outings.",
-        "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600",
-        "price": 1299, "discount": 999
+        "title": "Beige Designer Nehru Jacket Set",
+        "desc": "Sleek sleeveless Nehru jacket layered over a crisp pastel kurta.",
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600",
+        "price": 2999, "discount": 2499
     },
     {
         "cat": men_cat,
@@ -53,43 +53,8 @@ catalog = [
         "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600",
         "price": 1599, "discount": 1199
     },
-    {
-        "cat": men_cat,
-        "title": "Beige Designer Nehru Jacket Set",
-        "desc": "Sleek sleeveless Nehru jacket layered over a crisp pastel kurta.",
-        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600",
-        "price": 2999, "discount": 2499
-    },
-    {
-        "cat": men_cat,
-        "title": "Teal Blue Checkered Casual Cotton Shirt",
-        "desc": "Vibrant teal checkered shirt tailored for comfortable daily wear.",
-        "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600",
-        "price": 1399, "discount": 1099
-    },
-    {
-        "cat": men_cat,
-        "title": "Charcoal Grey Slim Fit Formal Suit",
-        "desc": "Sharp professional two-piece suit for corporate meetings and receptions.",
-        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600",
-        "price": 4599, "discount": 3799
-    },
-    {
-        "cat": men_cat,
-        "title": "Mustard Yellow Cotton Festive Dhoti Kurta",
-        "desc": "Bright festive wear combining a sunshine yellow kurta with traditional cotton dhoti.",
-        "image": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600",
-        "price": 2199, "discount": 1799
-    },
-    {
-        "cat": men_cat,
-        "title": "Rust Orange Streetwear Hoodie",
-        "desc": "Cozy fleece pullover hoodie featuring modern urban styling.",
-        "image": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=600",
-        "price": 1799, "discount": 1399
-    },
 
-    # --- WOMEN (10 Items) ---
+    # --- WOMEN (5 Items) ---
     {
         "cat": women_cat,
         "title": "Kanchipuram Red & Gold Pure Silk Saree",
@@ -108,15 +73,8 @@ catalog = [
         "cat": women_cat,
         "title": "Emerald Green Banarasi Brocade Saree",
         "desc": "Classic North Indian royal Banarasi silk saree with intricate gold weaving.",
-        "image": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600",
+        "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600",
         "price": 4599, "discount": 3699
-    },
-    {
-        "cat": women_cat,
-        "title": "Floral Summer Cotton Midi Dress",
-        "desc": "Breezy pastel floral print dress designed for warm weather elegance.",
-        "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600",
-        "price": 1699, "discount": 1299
     },
     {
         "cat": women_cat,
@@ -127,41 +85,13 @@ catalog = [
     },
     {
         "cat": women_cat,
-        "title": "Sky Blue Cotton Printed Kurti Set",
-        "desc": "Casual everyday wear straight-cut cotton kurti with matching trousers and dupatta.",
-        "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600",
-        "price": 1499, "discount": 1199
-    },
-    {
-        "cat": women_cat,
         "title": "Teal Blue Elegant Party Gown",
         "desc": "Contemporary Western-style evening gown featuring a flattering fit and flare silhouette.",
         "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600",
         "price": 3299, "discount": 2599
     },
-    {
-        "cat": women_cat,
-        "title": "Classic High-Waist Blue Denim Jeans",
-        "desc": "Comfortable stretch denim jeans offering a timeless casual fit.",
-        "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600",
-        "price": 1799, "discount": 1399
-    },
-    {
-        "cat": women_cat,
-        "title": "Beige Chic Oversized Blazer",
-        "desc": "Modern neutral-toned blazer for professional power dressing and casual layering.",
-        "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600",
-        "price": 2899, "discount": 2299
-    },
-    {
-        "cat": women_cat,
-        "title": "Crimson Red Velvet Party Dress",
-        "desc": "Luxurious soft velvet midi dress designed for winter parties and celebrations.",
-        "image": "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600",
-        "price": 2799, "discount": 2199
-    },
 
-    # --- KIDS (10 Items) ---
+    # --- KIDS (5 Items) ---
     {
         "cat": kids_cat,
         "title": "Kids Golden Silk Kurta Pyjama Set",
@@ -175,13 +105,6 @@ catalog = [
         "desc": "Classic South Indian silk skirt and blouse set for traditional ceremonies.",
         "image": "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=600",
         "price": 1699, "discount": 1299
-    },
-    {
-        "cat": kids_cat,
-        "title": "Children Denim Dungarees & T-Shirt",
-        "desc": "Durable cotton overalls paired with a cute striped tee for active play.",
-        "image": "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600",
-        "price": 1299, "discount": 999
     },
     {
         "cat": kids_cat,
@@ -199,41 +122,13 @@ catalog = [
     },
     {
         "cat": kids_cat,
-        "title": "Girls Floral Cotton Lehenga Choli",
-        "desc": "Lightweight ethnic wear lehenga set designed for comfortable festive dancing.",
-        "image": "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600",
-        "price": 1899, "discount": 1499
-    },
-    {
-        "cat": kids_cat,
-        "title": "Junior Yellow Cotton Short Kurta",
-        "desc": "Breezy yellow cotton ethnic top paired with comfortable white pyjamas.",
-        "image": "https://images.unsplash.com/photo-1503944583220-74e893e2f784?w=600",
-        "price": 999, "discount": 799
-    },
-    {
-        "cat": kids_cat,
-        "title": "Toddler Warm Fleece Hoodie",
-        "desc": "Cozy pullover hoodie to keep little ones warm during chilly evenings.",
-        "image": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600",
-        "price": 1199, "discount": 899
-    },
-    {
-        "cat": kids_cat,
-        "title": "Girls Mint Green Anarkali Suit",
-        "desc": "Charming little ethnic suit crafted with soft breathable cotton fabric.",
-        "image": "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=600",
-        "price": 1599, "discount": 1299
-    },
-    {
-        "cat": kids_cat,
-        "title": "Boys Checkered Casual Cotton Shirt",
-        "desc": "Smart everyday button-down shirt for young boys.",
+        "title": "Children Denim Dungarees & T-Shirt",
+        "desc": "Durable cotton overalls paired with a cute striped tee for active play.",
         "image": "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600",
-        "price": 899, "discount": 699
+        "price": 1299, "discount": 999
     },
 
-    # --- ACCESSORIES (10 Items) ---
+    # --- ACCESSORIES (5 Items) ---
     {
         "cat": acc_cat,
         "title": "Traditional Kundan Gold Necklace Set",
@@ -264,49 +159,14 @@ catalog = [
     },
     {
         "cat": acc_cat,
-        "title": "Bridal Zari Embroidered Clutch",
-        "desc": "Stunning party clutch embellished with beads and metallic threadwork.",
-        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600",
-        "price": 1499, "discount": 1199
-    },
-    {
-        "cat": acc_cat,
-        "title": "Men Classic Silk Pocket Square & Stole",
-        "desc": "Matching jacquard silk pocket square and matching stole set for ethnic suits.",
-        "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600",
-        "price": 799, "discount": 599
-    },
-    {
-        "cat": acc_cat,
         "title": "Traditional Silver Oxidized Choker",
         "desc": "Boho-chic German silver choker necklace for ethnic and fusion outfits.",
         "image": "https://images.unsplash.com/photo-1611591478339-30c6810ef50c?w=600",
         "price": 1199, "discount": 899
-    },
-    {
-        "cat": acc_cat,
-        "title": "Designer Metallic Waist Belt / Kamarbandh",
-        "desc": "Graceful traditional waist ornament worn over sarees and lehengas.",
-        "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600",
-        "price": 1599, "discount": 1299
-    },
-    {
-        "cat": acc_cat,
-        "title": "Men Metallic Analog Wrist Watch",
-        "desc": "Sleek stainless steel luxury wrist watch for formal and festive wear.",
-        "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600",
-        "price": 3499, "discount": 2799
-    },
-    {
-        "cat": acc_cat,
-        "title": "Women Floral Hair Gajra & Pins",
-        "desc": "Traditional jasmine and rose floral hair accessory for South/North Indian braids.",
-        "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600",
-        "price": 499, "discount": 349
     }
 ]
 
-print(f"Seeding exactly {len(catalog)} items (10 per sector)...")
+print(f"Seeding exactly {len(catalog)} items (5 per sector)...")
 
 for item in catalog:
     Product.objects.create(
@@ -320,4 +180,4 @@ for item in catalog:
         is_featured=True
     )
 
-print("Successfully populated exactly 10 items per sector (40 total items)!")
+print("Successfully populated 5 items per sector with correct images!")

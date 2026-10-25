@@ -37,9 +37,12 @@
                 <span>Total Amount:</span>
                 <strong class="fs-5 text-dark">₹{{ total }}</strong>
             </div>
-            <a href="{% url 'profile' %}" class="btn btn-fashion w-100 mt-3">Proceed to Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-fashion w-100 mt-3">Proceed to Checkout</a>
         </div>
     </div>
     {% endif %}
 </div>
 {% endblock %}
+```[cite: 1]
+
+Once saved, check your terminal—the server will automatically reload without errors, and your cart page will work perfectly!

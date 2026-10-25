@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center py-5">
+        <div class="card border-0 shadow-sm p-5 bg-white rounded-3">
+            <i class="bi bi-check-circle-fill text-success display-1 mb-3"></i>
+            <h2 class="fw-bold mb-2">Order Placed Successfully!</h2>
+            <p class="text-muted mb-4">Thank you for shopping with VOGUE. Your order has been placed and will be shipped soon.</p>
+            <div class="mb-4 text-start bg-light p-3 rounded">
+                <p class="mb-1"><strong>Order ID:</strong> #{{ order.id }}</p>
+                <p class="mb-1"><strong>Total Paid:</strong> ₹{{ order.total_amount }}</p>
+                <p class="mb-0"><strong>Shipping To:</strong> {{ order.address.street_address }}, {{ order.address.city }}, {{ order.address.state }} - {{ order.address.pincode }}</p>
+            </div>
+            <a href="{% url 'index' %}" class="btn btn-fashion w-100 py-2">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
